@@ -14,6 +14,7 @@ from ..models import Question
 #     return render(request, 'pybo/question_list.html', context)
 
 def index(request):
+    3/0  # 강제로 오류발생
     # page와 so(sort order) 파라미터 가져오기
     page = request.GET.get('page', '1')   # 페이지
     kw = request.GET.get('kw', '')  # 검색어
@@ -35,7 +36,7 @@ def index(request):
 
     paginator = Paginator(question_list, 10)  # 페이지당 10개씩 보여주기
     page_obj = paginator.get_page(page)
-    
+
     # context에 so 추가
     context = {'question_list': page_obj, 'so': so, 'page': page, 'kw': kw}
     return render(request, 'pybo/question_list.html', context)
