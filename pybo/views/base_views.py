@@ -3,6 +3,8 @@ from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 
 from ..models import Question
+import logging
+logger = logging.getLogger('pybo')
 
 
 # def index(request):
@@ -14,6 +16,7 @@ from ..models import Question
 #     return render(request, 'pybo/question_list.html', context)
 
 def index(request):
+    logger.info("INFO 레벨로 출력")
     # page와 so(sort order) 파라미터 가져오기
     page = request.GET.get('page', '1')   # 페이지
     kw = request.GET.get('kw', '')  # 검색어
